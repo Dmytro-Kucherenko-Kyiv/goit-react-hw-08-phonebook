@@ -15,7 +15,7 @@ export const List = styled.ul`
 export const Item = styled.li`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 20px;
   font-size: 30px;
 `
@@ -39,4 +39,10 @@ export const DeleteButton = styled.button`
     background-color: ${p => p.theme.colors.text};
     border-color: ${p => p.theme.colors.textAccent};
   }
+`
+
+export const Text = styled.div`
+  color: ${p => p.theme.colors.text};
+  font-size: 25px;
+  font-weigth: 600px;
 `

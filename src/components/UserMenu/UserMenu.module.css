@@ -7,3 +7,22 @@
 .username {
   font-weight: 700;
 }
+
+.btn {
+  margin-left:10px;
+  margin-right: 10px;
+  font-size: 16px;
+  padding: 6px;
+  color: #041934;
+  background-color: #c3f5bf;
+  border: 1mm solid #041934;
+  border-radius: 20px;
+  cursor:pointer;
+
+  &:hover,
+  &:focus {
+      color: #f0595b;
+      background-color: #041934;
+      border-color: #f0595b;
+    }
+}

@@ -17,10 +17,10 @@ export default function Contacts() {
 
   return (
     <>
-      <h1>Phonebook</h1>
+      <h1 style={{ fontSize: '40px', color: '#041934', textAlign: 'center' }}>Phonebook</h1>
       <ContactForm />
       <Filter />
-      <div>{isLoading && 'Request in progress...'}</div>
+      <div style={{ fontSize: '20px', color: '#f0595b', textAlign: 'center' }}>{isLoading && 'Request in progress...'}</div>
       <ContactList />
       <ToastContainer position="top-left" autoClose={2000} />
     </>

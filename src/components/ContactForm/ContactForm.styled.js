@@ -6,17 +6,22 @@ export const Form = styled.form`
   padding: 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 15px;
+  max-width: 500px;
+  margin: 0 auto;
 `
 export const Label = styled.label`
   font-size: 30px;
+  font-weigth: 500px;
   display: flex;
   flex-direction: column;
   gap: 5px;
+  color: ${p => p.theme.colors.text};
 `
 export const Input = styled.input`
   cursor: pointer;
-  font-size: 20px;
+  font-size: 25px;
   text-align: center;
   color: ${p => p.theme.colors.text};
   border: 1mm solid ${p => p.theme.colors.text};
