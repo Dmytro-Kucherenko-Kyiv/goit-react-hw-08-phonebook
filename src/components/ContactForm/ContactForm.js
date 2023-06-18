@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Form, Input, Label, SubmitButton } from "./ContactForm.styled";
 import { useDispatch, useSelector } from "react-redux";
-import { getContacts } from "../redux/selectors";
-import { nanoid } from "@reduxjs/toolkit";
-import { addContact } from "../redux/contactsOperations"
+import { getContacts } from "Redux/contacts/selectors";
+// import { nanoid } from "@reduxjs/toolkit";
+import { addContact } from "Redux/contacts/operations";
+import { toast } from 'react-toastify';
 
 export const ContactForm = () => {
 
@@ -17,11 +18,25 @@ const handleSubmit = e => {
     name.toLocaleLowerCase() === e.target.name.value.toLocaleLowerCase());
   
   if (result) {
-    const message = `${e.target.name.value} is already in contact`;
-    alert(message);
+/*     const message = `${e.target.name.value} is already in contact`;
+    alert(message); */
+    toast.warn(
+        `${e.target.name.value} is already in contact`,
+        {
+          position: 'top-right',
+          autoClose: 2000,
+        }
+      );
   }
   else {
-    dispatch(addContact({ id: nanoid(), name: e.target.name.value, number: e.target.number.value }));
+    dispatch(addContact({ name, number })).then(result => {
+      if (result.meta.requestStatus === 'fulfilled') {
+        setName('');
+        setNumber('');
+        return;
+      }
+      toast.error(`Something went wrong. Сontact ${e.target.name.value} was not added`);
+    });;
 
       setName('');
       setNumber('');

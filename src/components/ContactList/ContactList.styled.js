@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const Title = styled.h2`
+  font-size: 40px;
+  color: ${p => p.theme.colors.text};
+  text-align: center;
+`
+
 export const List = styled.ul`
   display: flex;
   flex-direction: column;

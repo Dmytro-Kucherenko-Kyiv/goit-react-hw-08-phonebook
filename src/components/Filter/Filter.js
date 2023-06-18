@@ -1,7 +1,7 @@
 import { Input, Label, LabelWrap } from "./Filter.styled";
 import { useDispatch, useSelector } from "react-redux";
-import { contactsFilter } from "../redux/filterSlice";
-import { getFilter } from "../redux/selectors"
+import { filterContact } from "Redux/contacts/contactsSlice";
+import { getFilter } from "Redux/contacts/selectors";
 
 export const Filter = () => {
   
@@ -16,7 +16,7 @@ export const Filter = () => {
           type='text'
           name='filter'
           value={filter}
-          onChange={e => dispatch(contactsFilter(e.target.value))}
+          onChange={e => dispatch(filterContact(e.target.value))}
         />
       </Label>
     </LabelWrap>

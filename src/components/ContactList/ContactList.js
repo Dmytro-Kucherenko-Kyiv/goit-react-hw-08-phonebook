@@ -1,12 +1,9 @@
-import { DeleteButton, Item, ItemStyle, List } from "./ContactList.styled";
-import { useSelector } from "react-redux";
-import { getContacts } from "../redux/selectors";
-import { getFilter } from "../redux/selectors";
-import { useDispatch } from "react-redux";
-import { deleteContact } from "../redux/contactsOperations"
+import { DeleteButton, Item, ItemStyle, List, Title } from "./ContactList.styled";
+import { getContacts, getFilter } from 'Redux/contacts/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteContact } from 'Redux/contacts/operations';
 
 export const ContactList = () => {
-
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
@@ -15,16 +12,22 @@ export const ContactList = () => {
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
-return(
-  <List>
-    {filteredContacts.map((contact) => 
-      <Item key={contact.id}>
-        <ItemStyle />
+  return (
+  <>
+    <Title>Contacts</Title>
+      {contacts.length === 0 && (
+        <p>You don't have any contacts. Please add some ...</p>
+      )}
+    <List>
+      {filteredContacts.map((contact) => 
+        <Item key={contact.id}>
+          <ItemStyle />
 
-        {contact.name} : {contact.number}
+          {contact.name} : {contact.number}
 
-        <DeleteButton type="button" onClick={() => dispatch(deleteContact(contact.id))}>Delete</DeleteButton>
-      </Item>)}
+          <DeleteButton type="button" onClick={() => dispatch(deleteContact(contact.id))}>Delete</DeleteButton>
+        </Item>)}
     </List>
+  </>
 )
-}
+};
